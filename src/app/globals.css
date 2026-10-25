@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-masader-dark: #061A12;
+  --color-masader-surface: #0B261C;
+  --color-masader-border: #1E4635;
+  --color-masader-gold: #E5A93C;
+  --color-masader-gold-light: #F3C66F;
+  --color-masader-emerald: #4ADE80;
+  --color-masader-emerald-dark: #22C55E;
+  --color-masader-subtext: #B8D0C5;
+  --color-masader-heading: #F8FAFC;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #061A12;
+  color: #F8FAFC;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #061A12;
+  color: #B8D0C5;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  selection-background-color: #E5A93C;
+  selection-color: #061A12;
+}
+
+::selection {
+  background-color: rgba(229, 169, 60, 0.3);
+  color: #F8FAFC;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #061A12;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E4635;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E5A93C;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(11, 38, 28, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #1E4635;
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(229, 169, 60, 0.6);
+  box-shadow: 0 10px 30px -10px rgba(229, 169, 60, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: translateX(-100%);
+}
+
+.shimmer-effect:hover::after {
+  animation: shimmer 1.2s infinite;
+}
+
+/* Infinite Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
